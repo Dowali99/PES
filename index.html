@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
+<html lang="ar" dir="rtl"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#080d18">
@@ -193,9 +191,13 @@ td.name{text-align:right;font-weight:bold}
 }
 </style>
 
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" href="./manifest.json">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#4b6cb7">
-<link rel="apple-touch-icon" href="icon.png"></head>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="icon.png">
+</head>
 <body>
 <div class="container">
 
@@ -237,7 +239,7 @@ td.name{text-align:right;font-weight:bold}
       <form id="playerForm">
         <label for="playerName">اسم الصديق</label>
         <div class="add-row">
-          <input id="playerName" maxlength="30" placeholder="مثلاً: عزيز" required>
+          <input id="playerName" maxlength="30" placeholder="مثلاً: عزيز" required="">
           <button class="secondary" type="submit">إضافة +</button>
         </div>
       </form>
@@ -251,19 +253,19 @@ td.name{text-align:right;font-weight:bold}
         <div class="score-row">
           <div class="player-select">
             <label for="homePlayer">اللاعب الأول</label>
-            <select id="homePlayer" required></select>
+            <select id="homePlayer" required=""></select>
           </div>
           <div class="vs">VS</div>
           <div class="player-select">
             <label for="awayPlayer">اللاعب الثاني</label>
-            <select id="awayPlayer" required></select>
+            <select id="awayPlayer" required=""></select>
           </div>
         </div>
 
         <div class="score-input">
-          <input id="homeScore" type="number" min="0" max="99" value="0" required aria-label="أهداف اللاعب الأول" inputmode="numeric">
+          <input id="homeScore" type="number" min="0" max="99" value="0" required="" aria-label="أهداف اللاعب الأول" inputmode="numeric">
           <span>:</span>
-          <input id="awayScore" type="number" min="0" max="99" value="0" required aria-label="أهداف اللاعب الثاني" inputmode="numeric">
+          <input id="awayScore" type="number" min="0" max="99" value="0" required="" aria-label="أهداف اللاعب الثاني" inputmode="numeric">
         </div>
 
         <div class="note" style="text-align:center">
@@ -539,6 +541,14 @@ loadData();
 render();
 </script>
 
-<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));}</script>
-</body>
-</html>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('Service Worker enregistré !'))
+        .catch(err => console.error('Erreur SW :', err));
+    });
+  }
+</script>
+</body></html>
